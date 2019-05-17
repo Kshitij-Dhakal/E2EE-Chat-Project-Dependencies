@@ -1,7 +1,9 @@
 package dependencies.Listeners;
 
-public interface UserStatusListener {
-    void online(String login);
+import dependencies.User.User;
 
-    void offline(String login);
+public interface UserStatusListener {
+    void online(User login);
+
+    void offline(User login);
 }

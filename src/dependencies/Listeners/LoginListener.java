@@ -1,7 +1,7 @@
 package dependencies.Listeners;
 
 public interface LoginListener {
-    public void onDatabaseLogin();
+    void onDatabaseLogin();
 
-    public void onChatServerLogin();
+    void onChatServerLogin();
 }
