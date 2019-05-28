@@ -1,4 +1,4 @@
-package dependencies.User;
+package dependencies.lib;
 
 public class User {
     protected String firstName;
