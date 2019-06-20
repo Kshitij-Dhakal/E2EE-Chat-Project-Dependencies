@@ -25,25 +25,18 @@ public class ProgressWindow extends JWindow {
             setBorder(new LineBorder(Color.DARK_GRAY));
             add(panel, BorderLayout.CENTER);
         }});
-
-
-        setVisible(true);
     }
 
     public static void main(String[] args) {
 
     }
 
-    public void setMessage(String message) {
-        this.messageLabel.setText(message);
+    public void addProgress() {
+        this.progressBar.setValue(this.progressBar.getValue() + 1);
     }
 
-    public void setProgress(int n) {
-        this.progressBar.setValue(n);
-    }
-
-    public void setProgress(int n, String message) {
-        this.progressBar.setValue(n);
+    public void addProgress(String message) {
+        this.progressBar.setValue(this.progressBar.getValue() + 1);
         this.messageLabel.setText(message);
     }
 }
