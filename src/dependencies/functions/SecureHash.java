@@ -22,9 +22,9 @@ public class SecureHash {
             ex.printStackTrace();
             return null;
         }
-        StringBuffer buffer = new StringBuffer();
-        for (int i = 0; i < digest.length; i++) {
-            buffer.append(Integer.toHexString(0xFF & digest[i]));
+        StringBuilder buffer = new StringBuilder();
+        for (byte b : digest) {
+            buffer.append(Integer.toHexString(0xFF & b));
         }
         return new BigInteger(buffer.toString(), 16);
     }
@@ -65,7 +65,7 @@ public class SecureHash {
         return salt;
     }
 
-    private static String toHex(byte[] array) throws NoSuchAlgorithmException {
+    private static String toHex(byte[] array) {
         BigInteger bi = new BigInteger(1, array);
         String hex = bi.toString(16);
         int paddingLength = (array.length * 2) - hex.length();
@@ -100,7 +100,7 @@ public class SecureHash {
         return diff == 0;
     }
 
-    private static byte[] fromHex(String hex) throws NoSuchAlgorithmException {
+    private static byte[] fromHex(String hex) {
         byte[] bytes = new byte[hex.length() / 2];
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);

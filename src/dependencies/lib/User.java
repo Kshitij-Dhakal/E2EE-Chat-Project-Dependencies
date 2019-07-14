@@ -4,6 +4,15 @@ public class User {
     protected String firstName;
     protected String lastName;
     protected String userHandle;
+    protected String password;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public String getUserHandle() {
         return userHandle;

@@ -5,9 +5,9 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class ProgressWindow extends JWindow {
-    JPanel panel = new JPanel();
-    JLabel messageLabel = new JLabel("", SwingConstants.CENTER);
-    JProgressBar progressBar;
+    private JPanel panel = new JPanel();
+    private JLabel messageLabel = new JLabel("", SwingConstants.CENTER);
+    private JProgressBar progressBar;
 
     public ProgressWindow(int n) {
         progressBar = new JProgressBar(0, n);

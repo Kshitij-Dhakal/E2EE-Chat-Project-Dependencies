@@ -6,8 +6,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class AddPlaceHolder implements FocusListener {
-    String placeHolder;
-    JTextField textField;
+    private String placeHolder;
+    private JTextField textField;
 
     public AddPlaceHolder(String placeHolder, JTextField textField) {
         this.placeHolder = placeHolder;
