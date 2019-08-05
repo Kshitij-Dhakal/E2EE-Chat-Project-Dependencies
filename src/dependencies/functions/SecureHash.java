@@ -44,6 +44,7 @@ public class SecureHash {
 //        System.out.println(matched);
         }
         System.out.println("Execution time : " + ((System.currentTimeMillis() - l) / 1000f) + " s");
+
     }
 
     public static String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {

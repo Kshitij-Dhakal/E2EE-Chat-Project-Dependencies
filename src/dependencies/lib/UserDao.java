@@ -9,7 +9,6 @@ import java.sql.*;
 public class UserDao {
 
     public static UserBean login(String user_handle, String password, String db_username, String db_password) throws ClassNotFoundException, SQLException, InvalidKeySpecException, NoSuchAlgorithmException {
-        System.out.println("UserDao Login : SQL exectued by " + db_username);
         UserBean userBean = new UserBean();
         userBean.setUser_handle(user_handle);
         userBean.setPassword(password);
@@ -18,7 +17,6 @@ public class UserDao {
 
     public static UserBean login(UserBean bean, String db_username, String db_password) throws SQLException,
             ClassNotFoundException, InvalidKeySpecException, NoSuchAlgorithmException {
-        System.out.println("UserDao Login : SQL exectued by " + db_username);
         Connection con = ConnectionManager.getConnection(db_username, db_password);
         String userHandle = bean.getUser_handle();
         String originalPassword = bean.getPassword();
@@ -45,7 +43,6 @@ public class UserDao {
     }
 
     public static User getUserInformation(String userHandle, String db_username, String db_password) throws SQLException, ClassNotFoundException {
-        System.out.println("UserDao : SQL exectued by " + db_username);
         User user = new User();
         user.setUserHandle(userHandle);
         Connection con = ConnectionManager.getConnection(db_username, db_password);
@@ -64,7 +61,6 @@ public class UserDao {
     }
 
     public static UserBean register(UserBean bean, String db_username, String db_password) throws ClassNotFoundException, SQLException, InvalidKeySpecException, NoSuchAlgorithmException {
-        System.out.println("UserDao : SQL exectued by " + db_username);
         Connection con = ConnectionManager.getConnection(db_username, db_password);
         String userHandle = bean.getUser_handle();
         String sql = "SELECT user_handle FROM users WHERE user_handle='" + userHandle + "'";
