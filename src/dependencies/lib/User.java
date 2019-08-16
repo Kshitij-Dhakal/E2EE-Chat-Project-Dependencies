@@ -6,12 +6,12 @@ public class User {
     protected String userHandle;
     protected String password;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUserHandle() {

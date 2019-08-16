@@ -5,24 +5,6 @@ package dependencies.lib;
 
 import java.io.Serializable;
 
-/**
- * @author dhaka
- *
- */
-enum STATUS {
-    ADMIN, MODERATOR, USER;
-
-    public static STATUS getStatus(String status) {
-        if (status.equalsIgnoreCase("admin")) {
-            return ADMIN;
-        } else if (status.equalsIgnoreCase("moderator")) {
-            return MODERATOR;
-        } else {
-            return USER;
-        }
-    }
-}
-
 public class UserBean extends User implements Serializable {
     private boolean valid;
     private STATUS status;
