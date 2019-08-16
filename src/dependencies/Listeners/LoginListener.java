@@ -1,7 +1,9 @@
 package dependencies.Listeners;
 
-public interface LoginListener {
-    void onLoginButtonEvent(String userhandle, String password);
+import dependencies.lib.UserBean;
 
-    void onChatServerLogin(String userhandle);
+public interface LoginListener {
+    void onLoginButtonEvent(UserBean bean);
+
+    void onChatServerLogin(UserBean bean);
 }

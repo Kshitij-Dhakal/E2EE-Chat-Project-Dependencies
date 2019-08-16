@@ -10,7 +10,7 @@ public class UserDao {
 
     public static UserBean login(String user_handle, String password, String db_username, String db_password) throws ClassNotFoundException, SQLException, InvalidKeySpecException, NoSuchAlgorithmException {
         UserBean userBean = new UserBean();
-        userBean.setUser_handle(user_handle);
+        userBean.setUserHandle(user_handle);
         userBean.setPassword(password);
         return login(userBean, db_username, db_password);
     }
@@ -18,7 +18,7 @@ public class UserDao {
     public static UserBean login(UserBean bean, String db_username, String db_password) throws SQLException,
             ClassNotFoundException, InvalidKeySpecException, NoSuchAlgorithmException {
         Connection con = ConnectionManager.getConnection(db_username, db_password);
-        String userHandle = bean.getUser_handle();
+        String userHandle = bean.getUserHandle();
         String originalPassword = bean.getPassword();
         String sql = "SELECT * FROM users WHERE user_handle='" + userHandle + "'";
 //        System.out.println(sql);
@@ -28,8 +28,8 @@ public class UserDao {
             String storedPassword = rs.getString("password");
             boolean validatePassword = SecureHash.validatePassword(originalPassword, storedPassword);
             if (validatePassword) {
-                bean.setFirst_name(rs.getString("first_name"));
-                bean.setLast_name(rs.getString("last_name"));
+                bean.setFirstName(rs.getString("first_name"));
+                bean.setLastName(rs.getString("last_name"));
                 bean.setStatus(STATUS.getStatus(rs.getString("status")));
                 bean.setValid(true);
             }
@@ -42,27 +42,10 @@ public class UserDao {
         return bean;
     }
 
-    public static User getUserInformation(String userHandle, String db_username, String db_password) throws SQLException, ClassNotFoundException {
-        User user = new User();
-        user.setUserHandle(userHandle);
-        Connection con = ConnectionManager.getConnection(db_username, db_password);
-        String sql = "SELECT user_handle, first_name, last_name FROM users WHERE user_handle='" + userHandle + "'";
-//        System.out.println(sql);
-        Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-        if (rs.next()) {
-            user.setFirstName(rs.getString("first_name"));
-            user.setLastName(rs.getString("last_name"));
-        }
-//		rs.close();
-//		st.close();
-        con.close();
-        return user;
-    }
-
     public static UserBean register(UserBean bean, String db_username, String db_password) throws ClassNotFoundException, SQLException, InvalidKeySpecException, NoSuchAlgorithmException {
+        //FIXME handle register in the server
         Connection con = ConnectionManager.getConnection(db_username, db_password);
-        String userHandle = bean.getUser_handle();
+        String userHandle = bean.getUserHandle();
         String sql = "SELECT user_handle FROM users WHERE user_handle='" + userHandle + "'";
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -71,9 +54,9 @@ public class UserDao {
         } else {
             sql = "INSERT INTO users(user_handle, first_name, last_name, password) VALUES(?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, bean.getUser_handle());
-            pst.setString(2, bean.getFirst_name());
-            pst.setString(3, bean.getLast_name());
+            pst.setString(1, bean.getUserHandle());
+            pst.setString(2, bean.getFirstName());
+            pst.setString(3, bean.getLastName());
             pst.setString(4, SecureHash.generateStorngPasswordHash(bean.getPassword()));
 //			pst.setString(5, "user");
             pst.execute();

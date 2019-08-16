@@ -1,9 +1,9 @@
 package dependencies.Listeners;
 
-import dependencies.lib.User;
+import dependencies.lib.UserBean;
 
 public interface UserStatusListener {
-    void online(User login);
+    void online(UserBean login);
 
-    void offline(User login);
+    void offline(UserBean login);
 }

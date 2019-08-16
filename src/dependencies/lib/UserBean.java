@@ -23,13 +23,10 @@ enum STATUS {
     }
 }
 
-public class UserBean implements Serializable {
+public class UserBean extends User implements Serializable {
     private boolean valid;
-    private String user_handle;
-    private String first_name;
-    private String last_name;
-    private String password;
     private STATUS status;
+    private int message = 0;
 
     /**
      *
@@ -37,47 +34,6 @@ public class UserBean implements Serializable {
     public UserBean() {
     }
 
-    /**
-     * @return the user_handle
-     */
-    public String getUser_handle() {
-        return user_handle;
-    }
-
-    /**
-     * @param user_handle the user_handle to set
-     */
-    public void setUser_handle(String user_handle) {
-        this.user_handle = user_handle;
-    }
-
-    /**
-     * @return the first_name
-     */
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    /**
-     * @param first_name the first_name to set
-     */
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    /**
-     * @return the last_name
-     */
-    public String getLast_name() {
-        return last_name;
-    }
-
-    /**
-     * @param last_name the last_name to set
-     */
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
 
     /**
      * @return the password
@@ -121,4 +77,20 @@ public class UserBean implements Serializable {
         this.valid = valid;
     }
 
+    @Override
+    public String toString() {
+        return this.userHandle + "~" + this.firstName + "~" + this.lastName;
+    }
+
+    public void addMessage() {
+        this.message++;
+    }
+
+    public void resetMessage() {
+        this.message = 0;
+    }
+
+    public int getMessage() {
+        return message;
+    }
 }
