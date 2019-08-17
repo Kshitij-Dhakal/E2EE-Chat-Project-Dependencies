@@ -2,7 +2,6 @@ package dependencies.lib;
 
 /**
  * @author dhaka
- *
  */
 public enum STATUS {
     ADMIN, MODERATOR, USER;
